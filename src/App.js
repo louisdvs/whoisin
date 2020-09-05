@@ -1,14 +1,29 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useQuery } from '@apollo/client';
+import gql from "graphql-tag"
+
+const QUERY = gql`
+{game{
+  id
+  name
+}
+}
+`
+
 
 function App() {
+ const { data, loading, error }  = useQuery(QUERY)
+
+ console.log(data)
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Test <code>src/App.js</code> and save to reload.
+          
         </p>
         <a
           className="App-link"
